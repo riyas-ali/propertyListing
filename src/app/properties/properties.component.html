@@ -1,0 +1,83 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2 class="text-white">M K Properties</h2>
+        <div class="d-flex">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="clickAddProp()">Add Listing</button>
+            <button class="btn btn-danger mx-2" routerLink="/login">Logout</button>
+        </div>
+    </div>
+</nav>
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">M K Properties</h1>
+        <p class="col-mb-8 fs-4">You Can Add Property data here free</p>
+        <a href="www.youtube.com" type="button" target="_blank" class="btn btn-primary">M K Properties</a>
+    </div>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Property Title</th>
+                <th scope="col">Property Price</th>
+                <th scope="col">Property Location</th>
+                <th scope="col">Property Details</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of allProperty">
+                <th scope="row">{{data.id}}</th>
+                <td>{{data.ptitle}}</td>
+                <td>{{data.pprice | currency}}</td>
+                <td>{{data.plocation}}</td>
+                <td>{{data.pdetails}}</td>
+                <td>
+                    <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                    <button class="btn btn-success me-2">View</button>
+                    <button class="btn btn-danger" (click)="deleteProp(data)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Property Record Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label">Property Title Name</label>
+                        <input type="text" class="form-control" formControlName="ptitle" id="formGroupExampleInput" placeholder="ABC Properties">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Property Price</label>
+                        <input type="text" class="form-control" formControlName="pprice" id="formGroupExampleInput2" placeholder="99999999999">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Property Location</label>
+                        <input type="text" class="form-control" formControlName="plocation" id="formGroupExampleInput2" placeholder="Kerala">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">Property Details</label>
+                        <input type="text" class="form-control" formControlName="pdetails" id="formGroupExampleInput2"
+                        placeholder="2BHK room set plot available">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="clear" data-bs-dismiss="modal">Clear</button>
+                <button type="button" class="btn btn-primary" (click)="addProp()" *ngIf="showAdd">Add To List</button>
+                <button type="button" class="btn btn-warning text-white" *ngIf="showEdit">Update Details</button>
+            </div>
+        </div>
+    </div>
+</div>
