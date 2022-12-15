@@ -3,10 +3,10 @@
   "signup": [
     {
       "id": 1,
-      "name": "Riyas Ali",
-      "email": "riyas@gamil.com",
-      "mobile": "8089589137",
-      "password": "riyas@123"
+      "name": "",
+      "email": "",
+      "mobile": "",
+      "password": ""
     }
   ],
   "profile": {
